@@ -6,3 +6,7 @@ spring:
   mvc:
     problemdetails:
       enabled: true
+
+server:
+  servlet:
+    context-path: /notification
