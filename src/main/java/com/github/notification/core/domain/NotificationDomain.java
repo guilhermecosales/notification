@@ -22,6 +22,9 @@ public class NotificationDomain {
 
     private LocalDateTime updatedAt;
 
+    public NotificationDomain() {
+    }
+
     public NotificationDomain(UUID notificationId, UUID userId, String message, NotificationType notificationType, NotificationStatus notificationStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.notificationId = notificationId;
         this.userId = userId;
