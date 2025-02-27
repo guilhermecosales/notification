@@ -9,21 +9,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMqConfiguration {
+public class RabbitQueueSetupConfiguration {
+
+    private final RabbitQueueProperties rabbitQueueProperties;
+
+    public RabbitQueueSetupConfiguration(RabbitQueueProperties rabbitQueueProperties) {
+        this.rabbitQueueProperties = rabbitQueueProperties;
+    }
 
     @Bean
     public Queue queue() {
-        return new Queue("notification-queue", false);
+        return new Queue(rabbitQueueProperties.getQueueName(), false);
     }
 
     @Bean
     public DirectExchange exchange() {
-        return new DirectExchange("notification-exchange");
+        return new DirectExchange(rabbitQueueProperties.getExchangeName());
     }
 
     @Bean
-    Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("notification.send");
+    public Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(rabbitQueueProperties.getRoutingKey());
     }
 
     @Bean

@@ -19,7 +19,7 @@ public class NotificationConsumer {
         this.notificationTypeHandler = notificationTypeHandler;
     }
 
-    @RabbitListener(queues = "notification-queue")
+    @RabbitListener(queues = "${spring.rabbitmq.queue.queue-name}")
     public void consume(@Payload NotificationPayload notificationPayload) {
         log.info("Received notification: {}", notificationPayload);
         notificationTypeHandler.send(
