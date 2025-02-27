@@ -2,9 +2,7 @@ package com.github.notification.adapter.outbound.persistence.entity;
 
 import com.github.notification.core.domain.enumerated.NotificationStatus;
 import com.github.notification.core.domain.enumerated.NotificationType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
@@ -24,8 +22,10 @@ public class NotificationEntity {
 
     private String message;
 
+    @Enumerated(EnumType.STRING)
     private NotificationType notificationType;
 
+    @Enumerated(EnumType.STRING)
     private NotificationStatus notificationStatus;
 
     @CreationTimestamp
@@ -103,4 +103,15 @@ public class NotificationEntity {
         this.updatedAt = updatedAt;
     }
 
+    @Override
+    public String toString() {
+        return "NotificationEntity{" +
+                "notificationId=" + notificationId +
+                ", userId=" + userId +
+                ", notificationType=" + notificationType +
+                ", notificationStatus=" + notificationStatus +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
