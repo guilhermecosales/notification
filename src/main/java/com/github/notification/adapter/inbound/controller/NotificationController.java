@@ -1,6 +1,6 @@
 package com.github.notification.adapter.inbound.controller;
 
-import com.github.notification.adapter.dto.NotificationResponse;
+import com.github.notification.adapter.message.http.NotificationResponse;
 import com.github.notification.core.domain.NotificationDomain;
 import com.github.notification.core.port.NotificationService;
 import org.modelmapper.ModelMapper;

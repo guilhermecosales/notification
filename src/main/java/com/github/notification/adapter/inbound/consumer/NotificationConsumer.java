@@ -1,6 +1,6 @@
 package com.github.notification.adapter.inbound.consumer;
 
-import com.github.notification.adapter.dto.NotificationPayload;
+import com.github.notification.adapter.message.queue.NotificationPayload;
 import com.github.notification.core.service.NotificationTypeHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

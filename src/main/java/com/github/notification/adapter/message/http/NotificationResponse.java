@@ -1,4 +1,4 @@
-package com.github.notification.adapter.dto;
+package com.github.notification.adapter.message.http;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.notification.core.domain.enumerated.NotificationStatus;
