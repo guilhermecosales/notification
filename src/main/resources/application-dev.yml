@@ -8,6 +8,11 @@ spring:
     username: guest
     password: guest
     queue:
-      queue-name: notification-queue
-      exchange-name: notification-exchange
-      routing-key: notification.send
+      main: notifications.queue
+      dlq: notifications.queue.dlq
+    exchange:
+      main: notifications.exchange
+      dlx: notifications.dlx
+    routing:
+      key: notifications.routingKey
+      dlq-key: notifications.dlq.routingKey

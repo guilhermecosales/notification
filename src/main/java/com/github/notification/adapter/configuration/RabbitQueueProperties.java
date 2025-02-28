@@ -3,47 +3,136 @@ package com.github.notification.adapter.configuration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration("rabbitQueueConfiguration")
-@ConfigurationProperties(prefix = "spring.rabbitmq.queue")
+@Configuration("rabbitQueueProperties")
+@ConfigurationProperties(prefix = "spring.rabbitmq")
 public class RabbitQueueProperties {
 
-    private String queueName;
+    private Queue queue;
 
-    private String exchangeName;
+    private Exchange exchange;
 
-    private String routingKey;
+    private Routing routing;
 
     public RabbitQueueProperties() {
     }
 
-    public RabbitQueueProperties(String queueName, String exchangeName, String routingKey) {
-        this.queueName = queueName;
-        this.exchangeName = exchangeName;
-        this.routingKey = routingKey;
+    public RabbitQueueProperties(Queue queue, Exchange exchange, Routing routing) {
+        this.queue = queue;
+        this.exchange = exchange;
+        this.routing = routing;
     }
 
-    public String getQueueName() {
-        return queueName;
+    public Queue getQueue() {
+        return queue;
     }
 
-    public void setQueueName(String queueName) {
-        this.queueName = queueName;
+    public void setQueue(Queue queue) {
+        this.queue = queue;
     }
 
-    public String getExchangeName() {
-        return exchangeName;
+    public Exchange getExchange() {
+        return exchange;
     }
 
-    public void setExchangeName(String exchangeName) {
-        this.exchangeName = exchangeName;
+    public void setExchange(Exchange exchange) {
+        this.exchange = exchange;
     }
 
-    public String getRoutingKey() {
-        return routingKey;
+    public Routing getRouting() {
+        return routing;
     }
 
-    public void setRoutingKey(String routingKey) {
-        this.routingKey = routingKey;
+    public void setRouting(Routing routing) {
+        this.routing = routing;
     }
 
+    public static class Queue {
+
+        private String main;
+        private String dlq;
+
+        public Queue() {
+        }
+
+        public Queue(String main, String dlq) {
+            this.main = main;
+            this.dlq = dlq;
+        }
+
+        public String getMain() {
+            return main;
+        }
+
+        public void setMain(String main) {
+            this.main = main;
+        }
+
+        public String getDlq() {
+            return dlq;
+        }
+
+        public void setDlq(String dlq) {
+            this.dlq = dlq;
+        }
+    }
+
+    public static class Exchange {
+
+        private String main;
+        private String dlx;
+
+        public Exchange() {
+        }
+
+        public Exchange(String main, String dlx) {
+            this.main = main;
+            this.dlx = dlx;
+        }
+
+        public String getMain() {
+            return main;
+        }
+
+        public void setMain(String main) {
+            this.main = main;
+        }
+
+        public String getDlx() {
+            return dlx;
+        }
+
+        public void setDlx(String dlx) {
+            this.dlx = dlx;
+        }
+    }
+
+    public static class Routing {
+
+        private String key;
+        private String dlqKey;
+
+        public Routing() {
+        }
+
+        public Routing(String key, String dlqKey) {
+            this.key = key;
+            this.dlqKey = dlqKey;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+
+        public String getDlqKey() {
+            return dlqKey;
+        }
+
+        public void setDlqKey(String dlqKey) {
+            this.dlqKey = dlqKey;
+        }
+    }
 }

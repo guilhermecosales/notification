@@ -19,12 +19,17 @@ public class NotificationConsumer {
         this.notificationTypeHandler = notificationTypeHandler;
     }
 
-    @RabbitListener(queues = "${spring.rabbitmq.queue.queue-name}")
+    @RabbitListener(queues = "${spring.rabbitmq.queue.main}")
     public void consume(@Payload NotificationPayload notificationPayload) {
-        log.info("Received notification: {}", notificationPayload);
-        notificationTypeHandler.send(
-                notificationPayload.getNotificationType(), notificationPayload.getMessage()
-        );
+        try {
+            log.info("Received notification: {}", notificationPayload);
+            notificationTypeHandler.send(
+                    notificationPayload.getNotificationType(),
+                    notificationPayload.getMessage()
+            );
+        } catch (Exception e) {
+            log.error("Error processing notification: {}", notificationPayload, e);
+        }
     }
 
 }
