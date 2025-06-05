@@ -58,6 +58,7 @@ public class RabbitQueueSetupConfiguration {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setDefaultRequeueRejected(false);
+        factory.setMessageConverter(jsonMessageConverter());
         return factory;
     }
 
