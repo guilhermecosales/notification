@@ -1,4 +1,4 @@
-package com.github.notification.adapter.configuration;
+package com.github.notification.application.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

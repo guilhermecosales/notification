@@ -1,7 +1,6 @@
 package com.github.notification.core.service;
 
 import com.github.notification.core.domain.enumerated.NotificationType;
-import com.github.notification.core.port.NotificationSenderService;
 
 public class NotificationTypeHandler {
 
@@ -12,13 +11,7 @@ public class NotificationTypeHandler {
     }
 
     public void send(NotificationType type, String message) {
-        NotificationSenderService service = notificationSenderFactory.getNotificationSenderService(type);
-
-        if (service != null) {
-            service.send(message);
-        } else {
-            throw new IllegalArgumentException("Notification type not supported: " + type);
-        }
+        notificationSenderFactory.getNotificationSenderService(type).send(message);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.github.notification.adapter.message.queue;
+package com.github.notification.application.message.queue;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.notification.core.domain.enumerated.NotificationType;

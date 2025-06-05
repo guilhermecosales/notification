@@ -1,4 +1,4 @@
-package com.github.notification.adapter.configuration;
+package com.github.notification.application.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.github.notification.adapter.service;
+package com.github.notification.adapter.outbound.persistence;
 
 
 import com.github.notification.adapter.outbound.persistence.entity.NotificationEntity;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class NotificationPersistenceImpl implements NotificationPersistence {
+public class NotificationPersistenceAdapter implements NotificationPersistence {
 
     private final NotificationRepository notificationRepository;
 
     private final ModelMapper modelMapper;
 
-    public NotificationPersistenceImpl(NotificationRepository notificationRepository, ModelMapper modelMapper) {
+    public NotificationPersistenceAdapter(NotificationRepository notificationRepository, ModelMapper modelMapper) {
         this.notificationRepository = notificationRepository;
         this.modelMapper = modelMapper;
     }

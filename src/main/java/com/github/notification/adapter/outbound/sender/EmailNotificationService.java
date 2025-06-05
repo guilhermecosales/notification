@@ -1,4 +1,4 @@
-package com.github.notification.adapter.outbound.service;
+package com.github.notification.adapter.outbound.sender;
 
 
 import com.github.notification.core.port.NotificationSenderService;

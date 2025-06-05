@@ -1,29 +1,22 @@
 package com.github.notification.core.service;
 
-import com.github.notification.adapter.outbound.service.EmailNotificationService;
-import com.github.notification.adapter.outbound.service.PushNotificationService;
-import com.github.notification.adapter.outbound.service.SmsNotificationService;
 import com.github.notification.core.domain.enumerated.NotificationType;
 import com.github.notification.core.port.NotificationSenderService;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class NotificationSenderFactory {
 
     private final Map<NotificationType, NotificationSenderService> notificationServices;
 
-    public NotificationSenderFactory(SmsNotificationService smsService,
-                                     EmailNotificationService emailService,
-                                     PushNotificationService pushService) {
-        this.notificationServices = Map.of(
-                NotificationType.SMS, smsService,
-                NotificationType.EMAIL, emailService,
-                NotificationType.PUSH, pushService
-        );
+    public NotificationSenderFactory(Map<NotificationType, NotificationSenderService> notificationServices) {
+        this.notificationServices = notificationServices;
     }
 
     public NotificationSenderService getNotificationSenderService(NotificationType type) {
-        return notificationServices.get(type);
+        return Optional.ofNullable(notificationServices.get(type))
+                .orElseThrow(() -> new IllegalArgumentException("Notification type not supported: " + type));
     }
 
 }
